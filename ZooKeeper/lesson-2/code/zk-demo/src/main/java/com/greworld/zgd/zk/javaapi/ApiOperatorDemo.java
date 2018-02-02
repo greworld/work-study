@@ -19,17 +19,23 @@ public class ApiOperatorDemo implements Watcher{
     private static CountDownLatch countDownLatch = new CountDownLatch(1);
     private static ZooKeeper zooKeeper;
     private static Stat stat = new Stat();
+    private static final String PATH = "/zk-book";
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         zooKeeper =new ZooKeeper(CONNECTSTRING, 5000, new ApiOperatorDemo());
         countDownLatch.await();
-        //createNode();
+        //createNode(PATH);
+        //createNode(PATH+"/c1");
+        getChildren(PATH);
+
+        //createNode(PATH+"/c2");
+        Thread.sleep(Integer.MAX_VALUE);
         //update("gre1235");
         //update("gre123456");
         //delete();
 
         //创建节点和子节点
-        String path="/node11";
+        /*String path="/node11";
 
         zooKeeper.create(path,"123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
         TimeUnit.SECONDS.sleep(1);
@@ -46,7 +52,7 @@ public class ApiOperatorDemo implements Watcher{
 
         //获取指定节点下的子节点
        List<String> childrens=zooKeeper.getChildren("/node",true);
-        System.out.println(childrens);
+        System.out.println(childrens);*/
 
     }
 
@@ -55,8 +61,8 @@ public class ApiOperatorDemo implements Watcher{
      * @throws KeeperException
      * @throws InterruptedException
      */
-    public static void createNode() throws KeeperException, InterruptedException {
-        String result= zooKeeper.create("/node1","123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+    public static void createNode(String fullPath) throws KeeperException, InterruptedException {
+        String result= zooKeeper.create(fullPath,"123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         System.out.println("创建成功："+result);
     }
 
@@ -73,6 +79,16 @@ public class ApiOperatorDemo implements Watcher{
     public static void delete() throws InterruptedException, KeeperException {
         zooKeeper.delete("/node10000000013",-1);
         Thread.sleep(2000);
+    }
+
+    public static void getChildren(String fullPath) throws KeeperException, InterruptedException {
+        List<String> childrenList = zooKeeper.getChildren(PATH,true);
+        System.out.println(childrenList);
+    }
+
+    public static void getChildrenSync(String fullPath) throws KeeperException, InterruptedException {
+        List<String> childrenList = zooKeeper.getChildren(PATH,true);
+        System.out.println(childrenList);
     }
 
     @Override
