@@ -4,9 +4,9 @@
 
 
 
-##2、CGLIB知道吗？它和JDK动态代理有何区别？手动写一个JDK动态代理？
+## 2、CGLIB知道吗？它和JDK动态代理有何区别？手动写一个JDK动态代理？
 
-##3、什么是Spring 框架？Spring 框架有哪些主要模块？
+## 3、什么是Spring 框架？Spring 框架有哪些主要模块？
 
 Spring 框架是一个为Java 应用程序的开发提供了综合、广泛的基础性支持的Java 平台。Spring
 帮助开发者解决了开发中基础性的问题，使得开发人员可以专注于应用程序的开发。Spring 框
@@ -17,7 +17,7 @@ Spring 框架至今已集成了20 多个模块。这些模块主要被分如下�
 
 ![spring-framework](C:\Users\Administrator\Desktop\images\spring-framework.png)
 
-##4、使用Spring 框架能带来哪些好处？
+## 4、使用Spring 框架能带来哪些好处？
 
 下面列举了一些使用Spring 框架带来的主要好处：
 1、Dependency Injection(DI) 方法使得构造器和JavaBean properties 文件中的依赖关系一目了然。
